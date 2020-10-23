@@ -35,17 +35,17 @@ const SetBgGreed = () =>{
     let today = new Date();
     let hour = today.getHours();
     if(hour < 12){
-        document.body.style.backgroundImage = "url('../img/morning.jpg')";
+        document.body.style.backgroundImage = "url('../Momentum/img/morning.jpg')";
         greeting.textContent = 'Good Morning';
     } else if(hour < 18) {
-        document.body.style.backgroundImage = "url('.../img/day.jpg')";
+        document.body.style.backgroundImage = "url('../Momentum/img/day.jpg')";
         greeting.textContent = 'Good Afternoon';
     } else if(hour < 21){
-        document.body.style.backgroundImage = "url('../img/evening.jpg')";
+        document.body.style.backgroundImage = "url('../Momentum/img/evening.jpg')";
         greeting.textContent = 'Good Evening';
         document.body.style.color = 'white';
     } else{
-        document.body.style.backgroundImage = "url('../img/night.jpg')";
+        document.body.style.backgroundImage = "url('../Momentum/img/night.jpg')";
         greeting.textContent = 'Good Night';
         document.body.style.color = 'white';
     }
