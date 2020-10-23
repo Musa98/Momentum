@@ -38,7 +38,7 @@ const SetBgGreed = () =>{
         document.body.style.backgroundImage = "url('../img/morning.jpg')";
         greeting.textContent = 'Good Morning';
     } else if(hour < 18) {
-        document.body.style.backgroundImage = "url('../img/day.jpg')";
+        document.body.style.backgroundImage = "url('./img/day.jpg')";
         greeting.textContent = 'Good Afternoon';
     } else if(hour < 21){
         document.body.style.backgroundImage = "url('../img/evening.jpg')";
