@@ -5,6 +5,15 @@ const greeting = document.getElementById('greeting');
 const name = document.getElementById('name');
 const focus = document.getElementById('focus');
 
+//GLOBAL
+const imagesElements = ['../Momentum/img/morning/','../Momentum/img/day/','../Momentum/img/evening/','../Momentum/img/night/']
+const images = ['01.jpg', '02.jpg', '03.jpg','04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg',
+                '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
+const btn = document.querySelector('.btn');
+let iAll = 1;
+let i = 0;
+let baseSrc = '';
+
 //const showAmPm = true;
 
 //VIEW TIME
@@ -39,23 +48,33 @@ const addZero = (n) =>{
 //Set Background and Greeting
 const SetBgGreed = () =>{
     let today = new Date();
+    //let today = new Date(2020, 9, 24, 0, 0, 0, 0);
     let hour = today.getHours();
-    if(hour > 6 && hour < 12){
-        document.body.style.backgroundImage = "url('../Momentum/img/morning.jpg')";
+    if(hour >= 6 && hour < 12){
         greeting.textContent = 'Good Morning,';
         document.body.style.color = 'white';
-    } else if(hour > 12 && hour < 18) {
-        document.body.style.backgroundImage = "url('../Momentum/img/day.jpg')";
+        baseSrc = imagesElements[0];
+        allImageSrc = baseSrc;
+        getImage(baseSrc);
+    } else if(hour >= 12 && hour < 18) {
         greeting.textContent = 'Good Afternoon,';
-    } else if(hour > 18 && hour < 24){
-        document.body.style.backgroundImage = "url('../Momentum/img/evening.jpg')";
+        baseSrc = imagesElements[1];
+        allImageSrc = baseSrc;
+        getImage(baseSrc);
+    } else if(hour >= 18 && hour < 24){
         greeting.textContent = 'Good Evening,';
         document.body.style.color = 'white';
-    } else{
-        document.body.style.backgroundImage = "url('../Momentum/img/night.jpg')";
+        baseSrc = imagesElements[2];
+        allImageSrc = baseSrc;
+        getImage(baseSrc);
+    } else if(hour >= 0 && hour < 6){
         greeting.textContent = 'Good Night,';
         document.body.style.color = 'white';
+        baseSrc = imagesElements[3];
+        allImageSrc = baseSrc;
+        getImage(baseSrc);
     }
+    setTimeout(SetBgGreed,3600000);
 }
 
 //GET NAME
@@ -104,9 +123,54 @@ const setFocus = (e) =>{
 
 const refreshText = (e) =>{
     e.target.textContent = ' ';
-    //e.target.focus();
 }
-//localStorage.setItem('focus', 'hello');
+
+// Make Background
+
+function viewBgImage(data) {
+    const body = document.querySelector('body');
+    const src = data;
+    const img = document.createElement('img');
+    img.src = src;
+    img.onload = () => {      
+      body.style.backgroundImage = `url(${src})`;
+    }; 
+  }
+function getImage(baseSrc) {
+    const index = i % images.length;
+    const imageSrc = baseSrc + images[index];
+    viewBgImage(imageSrc);
+    i++;
+}
+
+const viewAllImage = () =>{
+    if(iAll < 20){
+        btn.disabled = true;
+        const index = iAll % images.length;
+        const imageSrc = allImageSrc + images[index];
+        viewBgImage(imageSrc);
+        iAll++;
+        console.log(iAll);
+        setTimeout(viewAllImage,3000);
+    } else if(allImageSrc !== imagesElements[3]){
+        let indexImagesElements = imagesElements.indexOf(allImageSrc);
+        allImageSrc = imagesElements[indexImagesElements + 1];
+        iAll = 0;
+        viewAllImage();
+        console.log(allImageSrc);
+    }
+    else{
+        allImageSrc = baseSrc;
+        const index = i % images.length;
+        const imageSrc = baseSrc + images[index - 1];
+        iAll = 1;
+        btn.disabled = false;
+        viewBgImage(imageSrc);
+    }
+    //setTimeout(function() { btn.disabled = false }, 60000);
+}
+
+btn.addEventListener('click', viewAllImage)
 name.addEventListener('click', refreshText);
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
