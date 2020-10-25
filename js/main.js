@@ -170,6 +170,24 @@ const viewAllImage = () =>{
     //setTimeout(function() { btn.disabled = false }, 60000);
 }
 
+//Get quote
+const blockquote = document.querySelector('blockquote');
+const figcaption = document.querySelector('figcaption');
+const btnQuote = document.querySelector('.btnQuote');
+
+// если в ссылке заменить lang=en на lang=ru, цитаты будут на русском языке
+// префикс https://cors-anywhere.herokuapp.com используем для доступа к данным с других сайтов если браузер возвращает ошибку Cross-Origin Request Blocked 
+async function getQuote() {  
+  const url = `https://quotes-cors.herokuapp.com/`;
+  const res = await fetch(url);
+  const data = await res.json(); 
+  blockquote.textContent = data.quoteText;
+  figcaption.textContent = data.quoteAuthor;
+}
+document.addEventListener('DOMContentLoaded', getQuote);
+btnQuote.addEventListener('click', getQuote);
+
+
 btn.addEventListener('click', viewAllImage)
 name.addEventListener('click', refreshText);
 name.addEventListener('keypress', setName);
