@@ -46,6 +46,66 @@ h2{
     margin-bottom: 0.5rem;
 }
 
+.time-block{
+    width:500px;
+    margin-top: 50px;
+    margin-right:50px;
+}
+
+.time-weather{
+    display: flex;
+    width:100vw;
+    justify-content: center;
+}
+
+.weather{
+    width:200px;
+    height:200px;
+    margin-right: 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top:130px;
+
+}
+
+.weather-icon{
+    font-size: 60px;
+}
+
+.weather-config{
+    font-size:30px;
+    margin-left: 10px;
+}
+
+.temperature-content{
+    display: flex;
+    align-items:center;
+    margin-top: 30px;
+}
+
+.city{
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.content{
+    font-size:30px;
+    height:20px;
+}
+
+.temperature{
+    height: 20px;
+}
+
+.humidity{
+    height: 20px;
+}
+
+.wind{
+    height: 20px;
+}
+
 .btn {
     width: 200px;
     height: 40px;
@@ -125,9 +185,8 @@ h2{
     width:40rem;
     font: 0.9rem Georgia, serif;
     margin: 0;
-    background: black;
     padding: 1em;
-    border-radius: 1em;
+    flex-grow: 0.0001;
   }
   .quote figcaption,
   .quote blockquote {
@@ -136,6 +195,11 @@ h2{
   .quote figcaption {
     text-align: right;
   }
+.quote-author {
+    background: rgba(95, 84, 126, 0.651);
+    border-radius: 1em;
+    padding: 1em;
+}
 
 @media(max-width:700px){
     #time{

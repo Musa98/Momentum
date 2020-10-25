@@ -4,32 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/owfont-regular.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Momentum</title>
 </head>
 <body>
     <div class="container">
-        <div class="time-block">
-            <div id="month-day"></div>
-            <time id="time"></time>
-            <h1>
-                <span id="greeting"></span>
-                <span id="name" contenteditable="true"></span>
-            </h1>
-            <h2>What Is Your Focus For Today?</h2>
-            <h2 id="focus" contenteditable="true"></h2>
-            <button class="btn">Show All Backgrounds</button>
-        </div>
-    <figure class="quote">
-        <blockquote>
-            You were not born a winner, and you were not born a loser. You are what you make yourself be.
-        </blockquote>
-        <figcaption> 
-            Lou Holtz
-        </figcaption>
-        <button class="btnQuote">Change Quote</button>
-    </figure>
+            <div class="time-weather">
+                <div class="time-block">
+                    <div id="month-day"></div>
+                    <time id="time"></time>
+                    <h1>
+                        <span id="greeting"></span>
+                        <span id="name" contenteditable="true"></span>
+                    </h1>
+                    <h2>What Is Your Focus For Today?</h2>
+                    <h2 id="focus" contenteditable="true"></h2>
+                    <button class="btn">Show All Backgrounds</button>
+                </div>
+                <div class="weather">
+                    <i class="weather-icon owf"></i>
+                    <div class="temperature-content">
+                        <div class="content">Temperatura:</div>
+                        <div class="temperature  weather-config"></div>
+                    </div>
+                    <div class="temperature-content">
+                        <div class="content">Humidity:</div>
+                        <div class="humidity weather-config"></div>
+                    </div>
+                    <div class="temperature-content">
+                        <div class="content">Wind:</div>
+                        <div class="wind  weather-config"></div>
+                    </div>
+                    <div class="temperature-content">
+                        <div class="content">City:</div>
+                        <div class="city weather-config" contenteditable="true">Минск</div>
+                    </div>
+                </div>
+            </div>
+            <figure class="quote">
+                <div class="quote-author">
+                    <blockquote>
+                        You were not born a winner, and you were not born a loser. You are what you make yourself be.
+                    </blockquote>
+                    <figcaption> 
+                        Lou Holtz
+                    </figcaption>
+                </div>
+                <button class="btnQuote">Change Quote</button>
+            </figure>
     </div>
+
         
     <script src="js/main.js"></script>
 </body>

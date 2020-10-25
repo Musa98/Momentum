@@ -125,6 +125,11 @@ const refreshText = (e) =>{
     e.target.textContent = ' ';
 }
 
+//RefreshCity
+const refreshTextCity = (e) =>{
+    e.target.textContent = '';
+}
+
 // Make Background
 
 function viewBgImage(data) {
@@ -184,9 +189,66 @@ async function getQuote() {
   blockquote.textContent = data.quoteText;
   figcaption.textContent = data.quoteAuthor;
 }
+
+//Get Weather
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const humidity = document.querySelector('.humidity');
+const wind = document.querySelector('.wind');
+const city = document.querySelector('.city');
+
+async function getWeather() {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=ru&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    weatherIcon.className = 'weather-icon owf';
+    if(!data.weather){
+        city.textContent = 'Error';
+        temperature.textContent = ``;
+        humidity.textContent = ``;
+        wind.textContent = ``;
+    } else{
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        temperature.textContent = `${data.main.temp}°C`;
+        humidity.textContent = `${data.main.humidity}%`;
+        wind.textContent = `${data.wind.speed}м/c`;
+    }
+  }
+
+//Get City
+const getCity = () =>{
+    if(localStorage.getItem('city') === null){
+        city.textContent = '[Enter City]';
+    }else {
+        city.textContent = localStorage.getItem('city');
+    }
+}
+
+//Set City
+
+function setCity(e) {
+  if(e.type === 'keypress'){
+    if (e.code === 'Enter') {
+        getWeather();
+        localStorage.setItem('city', e.target.innerText);
+        city.blur();
+      }
+  }
+ else {
+    city.textContent = localStorage.getItem('city');
+  }
+}
+
+//Call weather
+city.addEventListener('click', refreshTextCity);
+document.addEventListener('DOMContentLoaded', getWeather);
+city.addEventListener('keypress', setCity);
+city.addEventListener('blur', setCity)
+
+//Call quote
 document.addEventListener('DOMContentLoaded', getQuote);
 btnQuote.addEventListener('click', getQuote);
-
 
 btn.addEventListener('click', viewAllImage)
 name.addEventListener('click', refreshText);
@@ -204,3 +266,5 @@ SetBgGreed();
 getName();
 
 getFocus();
+
+getCity();
