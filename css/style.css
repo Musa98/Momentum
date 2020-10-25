@@ -65,7 +65,7 @@ h2{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top:130px;
+    margin-top:50px;
 
 }
 
@@ -201,8 +201,155 @@ h2{
     padding: 1em;
 }
 
+.imp{
+    text-decoration: underline;
+}
+
 @media(max-width:700px){
     #time{
         font-size: 6rem;
     }
+
+    .time-block{
+        margin-bottom: 70px;
+    }
+
+    .time-weather{
+        flex-direction: column;
+        width: 73vw;
+        margin-top: 300px;
+    }
+
+    .weather{
+        margin-right: 0px;
+        margin-left: 150px;
+        margin-bottom:128px;
+    }
+
+    .container{
+        height: auto;
+    }
+
+    .quote{
+        width:80vw;
+    }
+
+}
+
+@media(max-width:570px){
+    .time-weather{
+        margin-top:300px;
+        width:100vw;
+    }
+}
+
+@media(max-width:450px){
+    #time{
+        font-size: 4rem;
+    }
+
+    .time-weather{
+        width:119vw;
+        margin-bottom: 100px;
+    }
+
+    #month-day{
+        font-size: 1.5rem;
+    }
+
+    h1{
+        font-size:1.5rem;
+    }
+
+    h2{
+        font-size:1.2rem;
+    }
+
+    .content{
+        font-size:1.5rem;
+        height: 20px;
+    }
+
+    .temperature{
+        font-size:1.5rem;
+        height: 19px;
+    }
+    
+    .humidity{
+        font-size:1.5rem;
+        height: 19px;
+    }
+    
+    .wind{
+        font-size:1.5rem;
+        height: 19px;
+    }
+
+    .city{
+        font-size:1.5rem;
+        height: 37px;
+    }
+}
+
+@media(max-width:390px){
+    .time-weather{
+        margin-top: 400px;
+        width:135vw;
+        margin-bottom: 100px;
+    }
+
+    #time{
+        font-size: 2rem;
+    }
+
+    #month-day{
+        font-size: 1rem;
+    }
+
+    h1{
+        font-size:1rem;
+    }
+
+    h2{
+        font-size:0.8rem;
+    }
+
+    .content{
+        font-size:1rem;
+        height: 20px;
+    }
+
+    .temperature{
+        font-size:1rem;
+        height: 19px;
+    }
+    
+    .humidity{
+        font-size:1rem;
+        height: 19px;
+    }
+    
+    .wind{
+        font-size:1rem;
+        height: 19px;
+    }
+
+    .city{
+        font-size:1rem;
+        height: 37px;
+    }
+
+    .btn{
+        font-size:0.7rem;
+        width:100px;
+    }
+}
+
+@media(max-width:320px){
+    .time-weather{
+        margin-top: 400px;
+        width:157vw;
+        margin-bottom: 100px;
+    }
+    
 }
